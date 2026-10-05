@@ -238,6 +238,42 @@
         background: linear-gradient(180deg, #0d5c3a, #d4af37);
         border-radius: 4px;
       }
+      
+/* ===== SCROLL REVEAL v2 (blur → jelas) ===== */
+main { overflow-x: clip; }
+
+.reveal {
+  opacity: 0;
+  filter: blur(10px);
+  transition:
+    opacity   1.4s ease,
+    translate 1.6s cubic-bezier(.16, 1, .3, 1),
+    scale     1.6s cubic-bezier(.16, 1, .3, 1),
+    filter    1.3s ease !important;
+  transition-delay: var(--delay, 0ms) !important;
+  will-change: opacity, translate, scale, filter;
+}
+.reveal.no-blur { filter: none; }
+
+.reveal.fade-up     { translate: 0 50px; }
+.reveal.fade-down   { translate: 0 -40px; }
+.reveal.slide-left  { translate: -90px 0; }
+.reveal.slide-right { translate: 90px 0; }
+.reveal.zoom-in     { scale: .88; }
+.reveal.blur-in     { translate: 0 28px; }
+
+.reveal.is-visible {
+  opacity: 1;
+  filter: none;
+  translate: none;
+  scale: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; filter: none !important; translate: none !important; scale: none !important; transition: none !important; }
+}
+
+
     </style>
   </head>
   <body class="antialiased selection:bg-champagne selection:text-white">
@@ -1427,6 +1463,140 @@
         )}&location=${encodeURIComponent(location)}`;
         window.open(calendarUrl, "_blank");
       }
+
+// ===== SCROLL REVEAL ANIMATION v2 =====
+const REVEAL_EFFECTS = ["fade-up","fade-down","slide-left","slide-right","zoom-in","blur-in"];
+const revealPending = new Set();
+let revealObserver = null;
+
+function showReveal(el) {
+  if (el._revealed) return;
+  el._revealed = true;
+  revealPending.delete(el);
+  if (revealObserver) revealObserver.unobserve(el);
+
+  el.classList.add("is-visible");
+  const d = parseInt(el.style.getPropertyValue("--delay")) || 0;
+
+  // Setelah animasi selesai, bersihkan class agar hover Tailwind tetap normal
+  setTimeout(() => {
+    el.classList.remove("reveal", "is-visible", "no-blur", ...REVEAL_EFFECTS);
+    el.style.removeProperty("--delay");
+  }, 2000 + d);
+}
+
+function addReveal(selector, effect, opt = {}) {
+  const { step = 0, base = 0, mod = 99, hero = false, soft = false } = opt;
+  document.querySelectorAll(selector).forEach((el, i) => {
+    if (el.classList.contains("reveal")) return; // jangan dobel
+    el.classList.add("reveal", effect);
+
+    // Tanpa blur untuk pembungkus yang berisi kartu kaca (backdrop-filter)
+    if (soft || el.querySelector(".glass-luxury")) el.classList.add("no-blur");
+
+    el.style.setProperty("--delay", base + (i % mod) * step + "ms");
+
+    if (hero) {
+      el.setAttribute("data-hero", "");
+    } else {
+      revealPending.add(el);
+      revealObserver.observe(el);
+    }
+  });
+}
+
+// Pengecekan cadangan: pastikan tidak ada elemen yang tertinggal tersembunyi
+let revealTick = false;
+function checkReveal() {
+  revealTick = false;
+  const vh = window.innerHeight;
+  const atBottom = window.scrollY + vh >= document.documentElement.scrollHeight - 6;
+  revealPending.forEach((el) => {
+    const r = el.getBoundingClientRect();
+    if (r.bottom <= 0 || r.top < vh - 40 || (atBottom && r.top < vh)) {
+      showReveal(el);
+    }
+  });
+}
+function requestRevealCheck() {
+  if (!revealTick) {
+    revealTick = true;
+    requestAnimationFrame(checkReveal);
+  }
+}
+
+function initScrollReveal() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) showReveal(e.target);
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  const S = "main > section:nth-of-type"; // urutan section
+
+  // HERO (dijalankan setelah undangan dibuka)
+  addReveal(`${S}(1) .max-w-4xl > :not(.pt-8):not(.pt-10)`, "blur-in", { step: 200, hero: true });
+  addReveal(`${S}(1) .pt-8 > p`, "blur-in", { base: 800, hero: true });
+  addReveal(`${S}(1) .pt-8 .grid > div`, "zoom-in", { base: 950, step: 140, hero: true, soft: true });
+  addReveal(`${S}(1) .pt-10`, "fade-up", { base: 1600, hero: true });
+
+  // QUOTE
+  addReveal("#quote-section .max-w-3xl > *", "fade-up", { step: 220 });
+
+  // MEMPELAI
+  addReveal("#groom-bride .mb-16", "fade-down");
+  addReveal("#groom-bride .grid > div:nth-child(1)", "slide-left");
+  addReveal("#groom-bride .grid > div:nth-child(2)", "slide-right", { base: 250 });
+
+  // ACARA
+  addReveal("#event .max-w-4xl > span, #event .max-w-4xl > h2", "fade-down", { step: 150 });
+  addReveal("#event .grid > div:nth-child(1)", "slide-left");
+  addReveal("#event .grid > div:nth-child(2)", "slide-right", { base: 250 });
+  addReveal("#event .flex-wrap", "zoom-in", { base: 200 });
+
+  // TIMELINE
+  addReveal(`${S}(5) .text-center`, "fade-down");
+  addReveal(`${S}(5) .relative.group`, "slide-right");
+
+  // GALERI
+  addReveal(`${S}(6) .max-w-5xl > span, ${S}(6) .max-w-5xl > h2`, "fade-down", { step: 150 });
+  addReveal(`${S}(6) .grid > div`, "zoom-in", { step: 150, mod: 3 });
+
+  // RSVP & AMPLOP
+  addReveal(`${S}(7) .grid > div:nth-child(1)`, "slide-left");
+  addReveal(`${S}(7) .grid > div:nth-child(2)`, "slide-right", { base: 250 });
+  addReveal(`${S}(7) .mt-12.glass-luxury`, "fade-up");
+  addReveal("#wishes-board > div", "fade-up", { step: 120 });
+
+  // FOOTER
+  addReveal("footer .max-w-xl > *", "fade-up", { step: 200 });
+
+  window.addEventListener("scroll", requestRevealCheck, { passive: true });
+  window.addEventListener("resize", requestRevealCheck);
+}
+
+function startHeroReveal() {
+  document.querySelectorAll("[data-hero]").forEach(showReveal);
+}
+
+// Hero otomatis jalan setelah tombol "Buka Undangan" diklik
+const _originalOpenInvitation = window.openInvitation;
+window.openInvitation = function () {
+  _originalOpenInvitation();
+  setTimeout(startHeroReveal, 850);
+};
+
+if (document.readyState === "loading") {
+  window.addEventListener("DOMContentLoaded", initScrollReveal);
+} else {
+  initScrollReveal();
+}
+
     </script>
   </body>
 </html>
