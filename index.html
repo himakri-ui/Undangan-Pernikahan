@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Eternal Voyage - Alpian & Nisa Wedding</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@600;700;900&family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Shippori+Mincho:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ocean: {
+                50: "#f0f9ff",
+                100: "#e0f2fe",
+                200: "#bae6fd",
+                600: "#0284c7",
+                800: "#075985",
+                900: "#0c4a6e",
+              },
+              champagne: {
+                light: "#fef9c3",
+                DEFAULT: "#d4af37",
+                dark: "#9a7b1c",
+                glow: "#fffbeb",
+              },
+              zoro: {
+                emerald: "#0d5c3a",
+                light: "#1f8a5a",
+                gold: "#10b981",
+              },
+              cloud: {
+                white: "#ffffff",
+                cream: "#faf8f5",
+                pearl: "#f3f4f6",
+              },
+            },
+            fontFamily: {
+              decorative: ["Cinzel Decorative", "serif"],
+              header: ["Cinzel", "serif"],
+              serifText: ["Cormorant Garamond", "serif"],
+              japanese: ["Shippori Mincho", "serif"],
+              body: ["Montserrat", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Custom Style Sheet for Japanese Waves, Floating Clouds & Gold Slash Animations -->
+    <style>
+      /* Base Styling */
+      body {
+        background-color: #fcfbf9;
+        color: #1e293b;
+        font-family: "Montserrat", sans-serif;
+        overflow-x: hidden;
+      }
+
+      /* Ukiyo-e Wave Canvas / Background Animation */
+      .wave-container {
+        position: relative;
+        width: 100%;
+        height: 120px;
+        overflow: hidden;
+      }
+
+      .wave-svg {
+        position: absolute;
+        bottom: 0;
+        width: 200%;
+        height: 100%;
+        background-repeat: repeat-x;
+      }
+
+      @keyframes waveMoveFast {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      @keyframes waveMoveSlow {
+        0% {
+          transform: translateX(-50%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      .animate-wave-1 {
+        animation: waveMoveFast 10s linear infinite;
+      }
+
+      .animate-wave-2 {
+        animation: waveMoveSlow 20s linear infinite;
+        opacity: 0.7;
+      }
+
+      /* Floating Cloud Drift (Japanese Kumo Pattern Style) */
+      @keyframes kumoFloatLeft {
+        0% {
+          transform: translateX(-10%) translateY(0);
+        }
+        50% {
+          transform: translateX(5%) translateY(-10px);
+        }
+        100% {
+          transform: translateX(-10%) translateY(0);
+        }
+      }
+
+      @keyframes kumoFloatRight {
+        0% {
+          transform: translateX(10%) translateY(0);
+        }
+        50% {
+          transform: translateX(-5%) translateY(-15px);
+        }
+        100% {
+          transform: translateX(10%) translateY(0);
+        }
+      }
+
+      .animate-kumo-left {
+        animation: kumoFloatLeft 22s ease-in-out infinite;
+      }
+
+      .animate-kumo-right {
+        animation: kumoFloatRight 26s ease-in-out infinite;
+      }
+
+      /* Luxury Glassmorphism Cards */
+      .glass-luxury {
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(212, 175, 55, 0.35);
+        box-shadow: 0 20px 40px rgba(2, 132, 199, 0.08),
+          0 6px 20px rgba(212, 175, 55, 0.12);
+      }
+
+      .glass-wanted {
+        background: linear-gradient(145deg, #fffdfa 0%, #fef8eb 100%);
+        border: 2px solid #d4af37;
+        box-shadow: 0 15px 35px rgba(13, 92, 58, 0.12),
+          inset 0 0 15px rgba(212, 175, 55, 0.15);
+      }
+
+      /* Gold Gradient Text & Glow */
+      .gold-gradient-text {
+        background: linear-gradient(
+          135deg,
+          #0d5c3a 0%,
+          #9a7b1c 20%,
+          #d4af37 50%,
+          #fef9c3 75%,
+          #9a7b1c 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .gold-border-glow {
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.35);
+      }
+
+      /* Log Pose Rotation Animation */
+      @keyframes logPoseSpin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .animate-logpose {
+        animation: logPoseSpin 30s linear infinite;
+      }
+
+      /* Gold Slash Flare Effect */
+      .slash-btn {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .slash-btn::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -150%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          60deg,
+          transparent,
+          rgba(255, 255, 255, 0.6),
+          transparent
+        );
+        transform: rotate(30deg);
+        transition: all 0.6s ease;
+      }
+
+      .slash-btn:hover::after {
+        left: 100%;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f0f9ff;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #0d5c3a, #d4af37);
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body class="antialiased selection:bg-champagne selection:text-white">
+    <!-- AUDIO ELEMENT -->
+    <audio id="bg-music" loop preload="auto">
+      <source
+        src="One Piece Ending 1 - Memories - SLS Piano Cover.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+
+    <!-- FLOATING MUSIC CONTROLLER -->
+    <button
+      id="music-toggle"
+      onclick="toggleMusic()"
+      aria-label="Toggle Music"
+      class="fixed bottom-6 right-6 z-50 bg-white/90 border-2 border-champagne text-zoro-emerald w-12 h-12 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300 hidden backdrop-blur-md"
+    >
+      <i
+        id="music-icon"
+        class="fas fa-compact-disc fa-spin text-xl text-champagne-dark"
+      ></i>
+    </button>
+
+    <!-- COVER / SPLASH SCREEN -->
+    <div
+      id="cover-screen"
+      class="fixed inset-0 z-50 flex flex-col items-center justify-center px-4 text-center bg-[length:100%] bg-[center_bottom_45%] transition-all duration-1000"
+      style="
+        background-image: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.164),
+            rgba(240, 249, 255, 0.658)
+          ),
+          url('WhatsApp Image 2026-10-05 at 23.36.02.jpeg');
+      " 
+    >
+      <!-- Floating Japanese Clouds Decorative Background -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <svg
+          class="absolute top-10 -left-10 w-72 h-36 opacity-30 animate-kumo-left fill-champagne"
+          viewBox="0 0 100 50"
+        >
+          <path
+            d="M10 30 Q20 10 40 20 Q60 5 80 20 Q95 25 90 40 Q70 45 50 40 Q30 50 10 30 Z"
+          />
+        </svg>
+        <svg
+          class="absolute bottom-10 -right-10 w-80 h-40 opacity-25 animate-kumo-right fill-zoro-emerald"
+          viewBox="0 0 100 50"
+        >
+          <path
+            d="M10 30 Q20 10 40 20 Q60 5 80 20 Q95 25 90 40 Q70 45 50 40 Q30 50 10 30 Z"
+          />
+        </svg>
+      </div>
+
+      <div
+        class="max-w-xl w-full p-8 md:p-12 glass-luxury rounded-3xl relative border-2 border-champagne shadow-2xl"
+      >
+        <!-- Filigree Gold Zoro Jolly Roger Crest -->
+        <div
+          class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white p-3 rounded-full border-2 border-champagne shadow-xl"
+        >
+          <svg class="w-14 h-14" viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="46" stroke="#D4AF37" stroke-width="2" />
+            <!-- 3 Crossed Swords Background -->
+            <path
+              d="M20 20 L80 80 M80 20 L20 80 M15 50 L85 50"
+              stroke="#0D5C3A"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <!-- Gold Skull with Bandana -->
+            <circle
+              cx="50"
+              cy="45"
+              r="18"
+              fill="#FFFDFA"
+              stroke="#D4AF37"
+              stroke-width="2"
+            />
+            <path
+              d="M30 40 C35 30 65 30 70 40 C65 35 35 35 30 40 Z"
+              fill="#0D5C3A"
+            />
+            <!-- Bandana -->
+            <circle cx="43" cy="45" r="2.5" fill="#1E293B" />
+            <circle cx="57" cy="45" r="2.5" fill="#1E293B" />
+            <!-- Teeth -->
+            <path
+              d="M42 55 L42 60 M47 55 L47 60 M53 55 L53 60 M58 55 L58 60"
+              stroke="#D4AF37"
+              stroke-width="1.5"
+            />
+          </svg>
+        </div>
+
+        <!-- Header Title -->
+        <div
+          class="mt-6 mb-2 flex justify-center items-center gap-3 text-champagne-dark"
+        >
+          <i
+            class="fas fa-compass text-sm animate-spin"
+            style="animation-duration: 20s"
+          ></i>
+          <span
+            class="font-japanese tracking-[0.3em] text-xs uppercase text-zoro-emerald font-bold"
+            >天命の航海 • CELESTIAL VOYAGE</span
+          >
+          <i
+            class="fas fa-compass text-sm animate-spin"
+            style="animation-duration: 20s"
+          ></i>
+        </div>
+
+        <h1
+          class="font-decorative text-3xl sm:text-5xl text-champagne my-3 gold-gradient-text tracking-wide font-bold"
+        >
+          ALPIAN & NISA
+        </h1>
+
+        <!-- Santoryu 3-Swords Gold Divider -->
+        <div class="flex items-center justify-center gap-2 my-4">
+          <div
+            class="h-[1px] w-12 bg-gradient-to-r from-transparent to-champagne"
+          ></div>
+          <div class="flex gap-1 text-champagne-dark">
+            <i class="fas fa-khanda text-xs"></i>
+            <i class="fas fa-khanda text-xs rotate-90"></i>
+            <i class="fas fa-khanda text-xs"></i>
+          </div>
+          <div
+            class="h-[1px] w-12 bg-gradient-to-l from-transparent to-champagne"
+          ></div>
+        </div>
+
+        <p
+          class="font-serifText text-slate-700 text-base sm:text-lg italic my-4"
+        >
+          "Di bawah naungan langit cerah dan gelombang abadi, takdir menuntun
+          dua jiwa berlabuh dalam satu cinta."
+        </p>
+
+        <div class="mb-8">
+          <p
+            class="text-[11px] uppercase tracking-widest text-slate-500 mb-1 font-header"
+          >
+            Kepada Yth. Bapak/Ibu/Saudara/i:
+          </p>
+          <div
+            id="guest-name-display"
+            class="text-lg font-bold font-header text-zoro-emerald bg-ocean-50/80 py-2.5 px-6 rounded-xl border border-champagne/50 inline-block shadow-inner"
+          >
+            Tamu Undangan
+          </div>
+        </div>
+
+        <!-- Open Invitation Button -->
+        <button
+          onclick="openInvitation()"
+          class="slash-btn relative inline-flex items-center justify-center px-9 py-4 font-header font-bold text-white bg-gradient-to-r from-zoro-emerald via-champagne-dark to-zoro-emerald rounded-full shadow-xl hover:scale-105 transition-all duration-300 border border-champagne"
+        >
+          <span
+            class="flex items-center gap-3 text-xs tracking-widest uppercase"
+          >
+            <i class="fas fa-anchor text-champagne-light"></i> Buka Undangan
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main id="main-content" class="opacity-0 transition-opacity duration-1000">
+      <!-- HERO SECTION -->
+      <section
+        class="min-h-screen relative flex items-center justify-center text-center px-4 py-24 bg-cover bg-center overflow-hidden"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(240, 249, 255, 0.178),
+              rgba(252, 251, 249, 1)
+            ),
+            url('https://images.unsplash.com/photo-1755548084494-92fa2b02d1c2?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        "  
+       
+      >
+        <!-- Ukiyo-e Wave Dynamic Svg Overlay -->
+        <div
+          class="absolute bottom-0 left-0 right-0 wave-container opacity-40 pointer-events-none"
+        >
+          <svg
+            class="wave-svg animate-wave-1"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z"
+              fill="#bae6fd"
+            ></path>
+          </svg>
+          <svg
+            class="wave-svg animate-wave-2"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,30 C200,100 450,-20 700,70 C900,140 1050,20 1200,50 L1200,120 L0,120 Z"
+              fill="#d4af37"
+            ></path>
+          </svg>
+        </div>
+
+        <div class="max-w-4xl mx-auto space-y-6 relative z-10">
+          <!-- Log Pose Rotating Crest -->
+          <div
+            class="inline-block p-4 rounded-full border-2 border-champagne bg-white/90 shadow-xl mb-2"
+          >
+            <i
+              class="fas fa-compass text-4xl text-zoro-emerald animate-logpose inline-block"
+            ></i>
+          </div>
+
+          <p
+            class="font-japanese text-zoro-emerald tracking-[0.3em] text-xs font-bold uppercase"
+          >
+            The Grand Wedding Voyage
+          </p>
+
+          <h1
+            class="font-decorative text-4xl sm:text-7xl font-bold gold-gradient-text drop-shadow-sm"
+          >
+            Alpian & Nisa
+          </h1>
+
+          <!-- Santoryu Sword Frame Accent -->
+          <div
+            class="flex justify-center items-center gap-4 text-champagne-dark"
+          >
+            <div
+              class="h-[2px] w-16 bg-gradient-to-r from-transparent via-champagne to-zoro-emerald"
+            ></div>
+            <span
+              class="font-header text-slate-700 text-sm sm:text-xl tracking-widest font-bold uppercase"
+              >Minggu, 25 Oktober 2026</span
+            >
+            <div
+              class="h-[2px] w-16 bg-gradient-to-l from-transparent via-champagne to-zoro-emerald"
+            ></div>
+          </div>
+
+          <!-- COUNTDOWN TIMER -->
+          <div class="pt-8">
+            <p
+              class="font-header text-xs uppercase tracking-widest text-slate-500 mb-4 font-semibold"
+            >
+              Menghitung Mundur Hari Bahagia
+            </p>
+            <div class="grid grid-cols-4 gap-3 sm:gap-6 max-w-lg mx-auto">
+              <div
+                class="glass-luxury p-3 sm:p-5 rounded-2xl border-2 border-champagne/60 shadow-lg"
+              >
+                <span
+                  id="days"
+                  class="font-header text-2xl sm:text-4xl gold-gradient-text font-bold"
+                  >00</span
+                >
+                <span
+                  class="block text-[10px] sm:text-xs text-zoro-emerald font-bold uppercase mt-1"
+                  >Hari</span
+                >
+              </div>
+              <div
+                class="glass-luxury p-3 sm:p-5 rounded-2xl border-2 border-champagne/60 shadow-lg"
+              >
+                <span
+                  id="hours"
+                  class="font-header text-2xl sm:text-4xl gold-gradient-text font-bold"
+                  >00</span
+                >
+                <span
+                  class="block text-[10px] sm:text-xs text-zoro-emerald font-bold uppercase mt-1"
+                  >Jam</span
+                >
+              </div>
+              <div
+                class="glass-luxury p-3 sm:p-5 rounded-2xl border-2 border-champagne/60 shadow-lg"
+              >
+                <span
+                  id="minutes"
+                  class="font-header text-2xl sm:text-4xl gold-gradient-text font-bold"
+                  >00</span
+                >
+                <span
+                  class="block text-[10px] sm:text-xs text-zoro-emerald font-bold uppercase mt-1"
+                  >Menit</span
+                >
+              </div>
+              <div
+                class="glass-luxury p-3 sm:p-5 rounded-2xl border-2 border-champagne/60 shadow-lg"
+              >
+                <span
+                  id="seconds"
+                  class="font-header text-2xl sm:text-4xl gold-gradient-text font-bold"
+                  >00</span
+                >
+                <span
+                  class="block text-[10px] sm:text-xs text-zoro-emerald font-bold uppercase mt-1"
+                  >Detik</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-10">
+            <a
+              href="#quote-section"
+              class="animate-bounce inline-block text-champagne text-2xl hover:text-zoro-emerald transition"
+              aria-label="Scroll Down"
+            >
+              <i class="fas fa-chevron-down"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUOTE / AYAT SECTION -->
+      <section
+        id="quote-section"
+        class="py-20 px-4 bg-gradient-to-b from-cloud-cream via-white to-ocean-50/40 text-center relative border-t border-b border-champagne/30"
+      >
+        <div class="max-w-3xl mx-auto space-y-5">
+          <div class="text-champagne text-3xl">
+            <i class="fas fa-quote-left"></i>
+          </div>
+          <p
+            class="font-serifText text-xl sm:text-2xl text-slate-800 italic leading-relaxed font-semibold"
+          >
+            "Seperti keteguhan Zoro yang bertaruh demi hal berharga, komitmen ini adalah perisai bersama untuk saling menjaga dan takkan pernah mundur dari badai kehidupan."
+          </p>
+          <div
+            class="w-24 h-0.5 bg-gradient-to-r from-transparent via-champagne to-transparent mx-auto my-3"
+          ></div>
+          <p
+            class="font-header text-xs text-zoro-emerald tracking-[0.25em] font-bold uppercase"
+          >
+            — Log pose Cinta Alpian & Nisa —
+          </p>
+        </div>
+      </section>
+
+      <!-- PROFIL MEMPELAI -->
+      <section id="groom-bride" class="py-24 px-4 relative bg-cloud-cream">
+        <div class="max-w-5xl mx-auto text-center">
+          <div class="mb-16">
+            <span
+              class="text-zoro-emerald font-japanese text-xs tracking-[0.3em] uppercase font-bold"
+              >THE CAPTAINS OF VOYAGE</span
+            >
+            <h2
+              class="font-decorative text-3xl sm:text-5xl text-slate-800 mt-2"
+            >
+              Mempelai Pria & Wanita
+            </h2>
+            <div
+              class="w-28 h-1 bg-gradient-to-r from-transparent via-champagne to-transparent mx-auto mt-4 rounded-full"
+            ></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <!-- GROOM CARD -->
+            <div
+              class="glass-wanted rounded-3xl p-8 text-center max-w-sm mx-auto w-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden border-2 border-champagne"
+            >
+              <div class="border-b-2 border-champagne/40 pb-2 mb-6">
+                <span
+                  class="font-header font-black text-2xl tracking-[0.2em] text-zoro-emerald"
+                  >WANTED</span
+                >
+                <p
+                  class="text-[9px] font-mono text-slate-500 uppercase tracking-widest"
+                >
+                  DEAD OR ALIVE - MARRIED
+                </p>
+              </div>
+
+              <div class="relative mb-6">
+                <div
+                  class="w-48 h-48 mx-auto rounded-2xl p-2 border-2 border-champagne bg-white shadow-md overflow-hidden"
+                >
+                  <img
+                    src="WhatsApp Image 2026-10-05 at 23.36.04.jpeg"
+                    alt="Muhammad Alpiannor S.Pd"
+                    class="w-full h-full object-cover rounded-xl"
+                  />
+                </div>
+                <div
+                  class="absolute -bottom-3 right-1/2 translate-x-1/2 bg-zoro-emerald text-white text-[11px] px-4 py-1 rounded-full font-header font-bold shadow-lg border border-champagne"
+                >
+                  <i class="fas fa-shield-alt text-champagne-light mr-1"></i> 
+                  The Swordman
+                </div>
+              </div>
+
+              <h3 class="font-header text-champagne font-bold text-slate-800">
+                Muhammad Alpiannoor, S.Pd.
+              </h3>
+              <p class="text-xs font-semibold text-zoro-emerald mt-1">
+                Putra Pertama dari Bp. Salahudin & Ibu Jamilah
+              </p>
+
+              <div class="my-4 py-3 border-t border-b border-champagne/30">
+                <p
+                  class="text-xs italic font-serifText text-slate-600 leading-relaxed"
+                >
+                  "Seorang lelaki tidak akan pernah menarik kembali kata-katanya. Seperti sumpah suci seorang pendekar, komitmen untuk mencintai, menghormati, dan menjagamu adalah janji mati yang akan dibawa hingga akhir hayat"
+                </p>
+              </div>
+
+              <div
+                class="flex justify-center items-center gap-2 text-champagne-dark font-mono text-xs"
+              >
+                <i class="fas fa-coins text-champagne"></i>
+                <span class="font-bold">BOUNTY: 3,000,000,000 BLESSINGS</span>
+              </div>
+            </div>
+
+            <!-- BRIDE CARD -->
+            <div
+              class="glass-wanted rounded-3xl p-8 text-center max-w-sm mx-auto w-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden border-2 border-champagne"
+            >
+              <div class="border-b-2 border-champagne/40 pb-2 mb-6">
+                <span
+                  class="font-header font-black text-2xl tracking-[0.2em] text-zoro-emerald"
+                  >WANTED</span
+                >
+                <p
+                  class="text-[9px] font-mono text-slate-500 uppercase tracking-widest"
+                >
+                  DEAD OR ALIVE - MARRIED
+                </p>
+              </div>
+
+              <div class="relative mb-6">
+                <div
+                  class="w-48 h-48 mx-auto rounded-2xl p-2 border-2 border-champagne bg-white shadow-md overflow-hidden"
+                >
+                  <img
+                    src="WhatsApp Image 2026-10-05 at 23.36.01.jpeg"
+                    alt="Hidayatun nisa"
+                    class="w-full h-full object-cover rounded-xl"
+                  />
+                </div>
+                <div
+                  class="absolute -bottom-3 right-1/2 translate-x-1/2 bg-zoro-emerald text-white text-[11px] px-4 py-1 rounded-full font-header font-bold shadow-lg border border-champagne"
+                >
+                  <i class="fas fa-compass text-champagne-light mr-1"></i> The
+                  Navigator
+                </div>
+              </div>
+
+              <h3 class="font-header text-champagne font-bold text-slate-800">
+                Hidayatun Nisa, S.h.
+              </h3>
+              <p class="text-xs font-semibold text-zoro-emerald mt-1">
+                Putri Kedua dari Bp. Fahrul & Ibu Hartati
+              </p>
+
+              <div class="my-4 py-3 border-t border-b border-champagne/30">
+                <p
+                  class="text-xs italic font-serifText text-slate-600 leading-relaxed"
+                >
+                  "Dunia luar mungkin penuh dengan badai yang tak terprediksi, namun dengan peta cinta yang telah diukir bersama, wanita ini berjanji akan selalu membawa kapal kita pulang ke pelabuhan yang aman."
+                </p>
+              </div>
+
+              <div
+                class="flex justify-center items-center gap-2 text-champagne-dark font-mono text-xs"
+              >
+                <i class="fas fa-coins text-champagne"></i>
+                <span class="font-bold">BOUNTY: 3,000,000,000 BLESSINGS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EVENT DETAILS -->
+      <section
+        id="event"
+        class="py-24 px-4 bg-gradient-to-b from-ocean-50/50 via-white to-cloud-cream relative"
+      >
+        <div class="max-w-4xl mx-auto text-center">
+          <span
+            class="text-zoro-emerald font-japanese text-xs tracking-[0.3em] uppercase font-bold"
+            >COORDINATES OF DESTINY</span
+          >
+          <h2
+            class="font-decorative text-3xl sm:text-5xl text-slate-800 mt-2 mb-12"
+          >
+            Waktu & Lokasi Acara
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- AKAD NIKAH -->
+            <div
+              class="glass-luxury rounded-3xl p-8 relative overflow-hidden group border-2 border-champagne/60 shadow-xl"
+            >
+              <div
+                class="absolute top-0 right-0 bg-gradient-to-l from-zoro-emerald to-champagne-dark text-white font-header text-[10px] font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wider"
+              >
+                Akad Nikah
+              </div>
+              <i
+                class="fas fa-scroll text-4xl text-champagne mb-4 mt-2 inline-block"
+              ></i>
+              <h3 class="font-header text-2xl text-slate-800 font-bold mb-2">
+                Janji Suci
+              </h3>
+
+              <p
+                class="text-slate-700 text-sm mb-4 leading-relaxed font-medium"
+              >
+                <i class="far fa-calendar-alt text-zoro-emerald mr-2"></i>
+                Senin, 25 Septmber 2026<br />
+                <i class="far fa-clock text-zoro-emerald mr-2"></i> 08.00 WIB -
+                Selesai
+              </p>
+
+              <div
+                class="border-t border-champagne/30 pt-4 mt-4 text-xs text-slate-600"
+              >
+                <p class="font-bold text-slate-800 text-sm">
+                  Rantau Badauh
+                </p>
+                <p>Brito Kuala, Kalimantan Selatan</p>
+              </div>
+            </div>
+
+            <!-- RESEPSI -->
+            <div
+              class="glass-luxury rounded-3xl p-8 relative overflow-hidden group border-2 border-champagne/60 shadow-xl"
+            >
+              <div
+                class="absolute top-0 right-0 bg-gradient-to-l from-zoro-emerald to-champagne-dark text-white font-header text-[10px] font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wider"
+              >
+                Resepsi
+              </div>
+              <i
+                class="fas fa-glass-cheers text-4xl text-champagne mb-4 mt-2 inline-block"
+              ></i>
+              <h3 class="font-header text-2xl text-slate-800 font-bold mb-2">
+                Pesta Pelayaran
+              </h3>
+
+              <p
+                class="text-slate-700 text-sm mb-4 leading-relaxed font-medium"
+              >
+                <i class="far fa-calendar-alt text-zoro-emerald mr-2"></i>
+                Minggu, 25 Mei 2026<br />
+                <i class="far fa-clock text-zoro-emerald mr-2"></i> 08.00 WIB -
+                Selesai
+              </p>
+
+              <div
+                class="border-t border-champagne/30 pt-4 mt-4 text-xs text-slate-600"
+              >
+                <p class="font-bold text-slate-800 text-sm">
+                  Rantau Badauh
+                </p>
+                <p>Brito Kuala, Kalimantan Selatan</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="mt-12 flex flex-wrap justify-center gap-5">
+            <a
+              href="https://maps.app.goo.gl/5dwJmzeFjciANu3y7?g_st=aw"
+              target="_blank"
+              class="slash-btn bg-gradient-to-r from-zoro-emerald via-champagne-dark to-zoro-emerald text-white font-header font-bold text-xs px-8 py-3.5 rounded-full shadow-lg hover:shadow-2xl transition flex items-center gap-2 border border-champagne"
+            >
+              <i class="fas fa-map-marked-alt text-champagne-light"></i> Buka
+              Google Maps
+            </a>
+            <button
+              onclick="saveCalendar()"
+              class="bg-white border-2 border-champagne text-zoro-emerald hover:bg-ocean-50 font-header font-bold text-xs px-8 py-3.5 rounded-full shadow-md transition flex items-center gap-2"
+            >
+              <i class="far fa-calendar-plus text-champagne-dark"></i> Simpan ke
+              Kalender
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIMELINE LOGBOOK -->
+      <section class="py-24 px-4 bg-white relative">
+        <div class="max-w-3xl mx-auto">
+          <div class="text-center mb-16">
+            <span
+              class="text-zoro-emerald font-japanese text-xs tracking-[0.3em] uppercase font-bold"
+              >LOG POSE VOYAGE</span
+            >
+            <h2
+              class="font-decorative text-3xl sm:text-5xl text-slate-800 mt-2"
+            >
+              Kisah Petualangan Cinta
+            </h2>
+            <div
+              class="w-24 h-1 bg-gradient-to-r from-transparent via-champagne to-transparent mx-auto mt-4 rounded-full"
+            ></div>
+          </div>
+
+          <div
+            class="relative border-l-2 border-champagne/60 pl-6 ml-4 space-y-12"
+          >
+            <div class="relative group">
+              <div
+                class="absolute -left-[37px] top-0 bg-zoro-emerald text-champagne-light rounded-full w-10 h-10 flex items-center justify-center font-bold text-xs shadow-lg border-2 border-champagne"
+              >
+                <i class="fas fa-compass"></i>
+              </div>
+              <div
+                class="glass-luxury p-6 rounded-2xl border border-champagne/40"
+              >
+                <span
+                  class="text-zoro-emerald font-header text-[11px] tracking-widest font-bold"
+                  >TAHUN 2019 — PERTEMUAN PERTAMA</span
+                >
+                <h3 class="font-header text-xl text-slate-800 font-bold my-1">
+                  Awal Berlabuh
+                </h3>
+                <p
+                  class="text-xs text-slate-600 leading-relaxed font-serifText text-base"
+                >
+                  Di antara ribuan lautan kehidupan, takdir mempertemukan kami.
+                  Sebuah perjumpaan sederhana yang perlahan berkembang menjadi
+                  persahabatan yang bermakna.
+                </p>
+              </div>
+            </div>
+
+            <div class="relative group">
+              <div
+                class="absolute -left-[37px] top-0 bg-zoro-emerald text-champagne-light rounded-full w-10 h-10 flex items-center justify-center font-bold text-xs shadow-lg border-2 border-champagne"
+              >
+                <i class="fas fa-anchor"></i>
+              </div>
+              <div
+                class="glass-luxury p-6 rounded-2xl border border-champagne/40"
+              >
+                <span
+                  class="text-zoro-emerald font-header text-[11px] tracking-widest font-bold"
+                  >TAHUN 2026 — KOMITMEN</span
+                >
+                <h3 class="font-header text-xl text-slate-800 font-bold my-1">
+                  Menentukan Arah Kompas
+                </h3>
+                <p
+                  class="text-xs text-slate-600 leading-relaxed font-serifText text-base"
+                >
+                  Kami memutuskan untuk melangkah bersama melewati gelombang
+                  pasang surut kehidupan, saling menguatkan bagaikan jangkar
+                  yang kokoh.
+                </p>
+              </div>
+            </div>
+
+            <div class="relative group">
+              <div
+                class="absolute -left-[37px] top-0 bg-zoro-emerald text-champagne-light rounded-full w-10 h-10 flex items-center justify-center font-bold text-xs shadow-lg border-2 border-champagne"
+              >
+                <i class="fas fa-heart"></i>
+              </div>
+              <div
+                class="glass-luxury p-6 rounded-2xl border border-champagne/40"
+              >
+                <span
+                  class="text-zoro-emerald font-header text-[11px] tracking-widest font-bold"
+                  >TAHUN 2026 — PELAMINAN</span
+                >
+                <h3 class="font-header text-xl text-slate-800 font-bold my-1">
+                  Pelayaran Abadi
+                </h3>
+                <p
+                  class="text-xs text-slate-600 leading-relaxed font-serifText text-base"
+                >
+                  Mengikat janji suci pernikahan untuk memulai babak baru
+                  petualangan kehidupan sebagai pasangan suami istri selamanya.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHOTO GALLERY -->
+      <section class="py-24 px-4 bg-cloud-cream">
+        <div class="max-w-5xl mx-auto text-center">
+          <span
+            class="text-zoro-emerald font-japanese text-xs tracking-[0.3em] uppercase font-bold"
+            >MEMORIES FROM THE GRAND LINE</span
+          >
+          <h2
+            class="font-decorative text-3xl sm:text-5xl text-slate-800 mt-2 mb-12"
+          >
+            Galeri Momen Bahagia
+          </h2>
+
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
+            <div
+              onclick="openGalleryModal(this.children[0].src)"
+              class="cursor-pointer overflow-hidden rounded-2xl border-2 border-champagne shadow-md h-52 sm:h-64 group relative"
+            >
+              <img
+                src="WhatsApp Image 2026-10-05 at 23.36.01 (1).jpeg"
+                alt="Gallery 1"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+              />
+              <div
+                class="absolute inset-0 bg-zoro-emerald/20 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white text-xl"
+              >
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div
+              onclick="openGalleryModal(this.children[0].src)"
+              class="cursor-pointer overflow-hidden rounded-2xl border-2 border-champagne shadow-md h-52 sm:h-64 group relative"
+            >
+              <img
+                src="WhatsApp Image 2026-10-05 at 23.36.02 (1).jpeg"
+                alt="Gallery 2"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+              />
+              <div
+                class="absolute inset-0 bg-zoro-emerald/20 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white text-xl"
+              >
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div
+              onclick="openGalleryModal(this.children[0].src)"
+              class="cursor-pointer overflow-hidden rounded-2xl border-2 border-champagne shadow-md h-52 sm:h-64 group relative"
+            >
+              <img
+                src="WhatsApp Image 2026-10-05 at 23.36.03.jpeg"
+                alt="Gallery 3"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+              />
+              <div
+                class="absolute inset-0 bg-zoro-emerald/20 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white text-xl"
+              >
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div
+              onclick="openGalleryModal(this.children[0].src)"
+              class="cursor-pointer overflow-hidden rounded-2xl border-2 border-champagne shadow-md h-52 sm:h-64 group relative"
+            >
+              <img
+                src="WhatsApp Image 2026-10-05 at 23.36.03 (1).jpeg"
+                alt="Gallery 4"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+              />
+              <div
+                class="absolute inset-0 bg-zoro-emerald/20 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white text-xl"
+              >
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div
+              onclick="openGalleryModal(this.children[0].src)"
+              class="cursor-pointer overflow-hidden rounded-2xl border-2 border-champagne shadow-md h-52 sm:h-64 group relative"
+            >
+              <img
+                src="WhatsApp Image 2026-10-05 at 23.36.02 (2).jpeg"
+                alt="Gallery 5"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+              />
+              <div
+                class="absolute inset-0 bg-zoro-emerald/20 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white text-xl"
+              >
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div
+              onclick="openGalleryModal(this.children[0].src)"
+              class="cursor-pointer overflow-hidden rounded-2xl border-2 border-champagne shadow-md h-52 sm:h-64 group relative"
+            >
+              <img
+                src="WhatsApp Image 2026-10-05 at 23.36.02 (3).jpeg"
+                alt="Gallery 6"
+                class="w-full h-full-champagne object-cover group-hover:scale-110 transition duration-500"
+              />
+              <div
+                class="absolute inset-0 bg-zoro-emerald/20 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white text-xl"
+              >
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RSVP & DIGITAL GIFT -->
+      <section class="py-24 px-4 bg-gradient-to-b from-white to-ocean-50/60">
+        <div class="max-w-4xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <!-- RSVP FORM -->
+            <div
+              class="glass-luxury p-8 rounded-3xl border-2 border-champagne/60 shadow-xl"
+            >
+              <h3 class="font-header text-xl text-slate-800 font-bold mb-2">
+                Konfirmasi Kehadiran
+              </h3>
+              <p class="text-xs text-slate-500 mb-6">
+                Mohon konfirmasi kehadiran Anda untuk menyukseskan acara ini.
+              </p>
+
+              <form
+                id="rsvp-form"
+                onsubmit="handleRSVP(event)"
+                class="space-y-4 text-xs"
+              >
+                <div>
+                  <label
+                    class="block text-slate-700 font-semibold mb-1 font-header"
+                    >Nama Lengkap</label
+                  >
+                  <input
+                    type="text"
+                    required
+                    id="rsvp-name"
+                    class="w-full bg-white/90 border border-champagne/50 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:border-zoro-emerald"
+                    placeholder="Masukkan nama Anda"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    class="block text-slate-700 font-semibold mb-1 font-header"
+                    >Status Kehadiran</label
+                  >
+                  <select
+                    id="rsvp-status"
+                    class="w-full bg-white/90 border border-champagne/50 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:border-zoro-emerald"
+                  >
+                    <option value="Hadir">Ya, Saya Akan Hadir</option>
+                    <option value="Tidak Hadir">Maaf, Tidak Bisa Hadir</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label
+                    class="block text-slate-700 font-semibold mb-1 font-header"
+                    >Jumlah Tamu</label
+                  >
+                  <input
+                    type="number"
+                    min="1"
+                    max="5"
+                    value="1"
+                    id="rsvp-guests"
+                    class="w-full bg-white/90 border border-champagne/50 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:border-zoro-emerald"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    class="block text-slate-700 font-semibold mb-1 font-header"
+                    >Pesan & Doa Ucapan</label
+                  >
+                  <textarea
+                    id="rsvp-message"
+                    rows="3"
+                    class="w-full bg-white/90 border border-champagne/50 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:border-zoro-emerald"
+                    placeholder="Tuliskan ucapan selamat..."
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="slash-btn w-full bg-gradient-to-r from-zoro-emerald via-champagne-dark to-zoro-emerald text-white font-header font-bold py-3.5 rounded-xl shadow-md transition border border-champagne"
+                >
+                  Kirim Konfirmasi
+                </button>
+              </form>
+            </div>
+
+            <!-- DIGITAL GIFT -->
+            <div class="space-y-6">
+              <div
+                class="glass-luxury p-8 rounded-3xl border-2 border-champagne/60 shadow-xl"
+              >
+                <i
+                  class="fas fa-gift text-4xl text-champagne mb-3 inline-block"
+                ></i>
+                <h3 class="font-header text-xl text-slate-800 font-bold mb-2">
+                  Amplop Digital
+                </h3>
+                <p class="text-xs text-slate-500 mb-6">
+                  Doa restu Anda merupakan hadiah terindah bagi kami. Namun jika
+                  ingin memberi tanda kasih, Anda dapat mengirimkannya melalui:
+                </p>
+
+                <!-- Bank Account 1 -->
+                <div
+                  class="bg-white/90 p-4 rounded-2xl border border-champagne/40 mb-4 shadow-sm"
+                >
+                  <p
+                    class="text-[11px] text-zoro-emerald font-bold font-header"
+                  >
+                    BANK BNI
+                  </p>
+                  <p
+                    class="text-base font-mono font-bold text-slate-800 tracking-wider my-1"
+                    id="rek-bni"
+                  >
+                    2050757896
+                  </p>
+                  <p class="text-xs text-slate-500">a.n. Muhammad Alpiannoor</p>
+                  <button
+                    onclick="copyToClipboard('rek-bca')"
+                    class="mt-2 text-xs bg-zoro-emerald/10 hover:bg-zoro-emerald/20 text-zoro-emerald border border-zoro-emerald/40 px-4 py-1.5 rounded-full transition flex items-center gap-1 font-semibold"
+                  >
+                    <i class="far fa-copy"></i> Salin Rekening
+                  </button>
+                </div>
+
+                
+          </div>
+
+          <!-- WISHES BOARD -->
+          <div
+            class="mt-12 glass-luxury p-8 rounded-3xl border border-champagne/40 shadow-xl"
+          >
+            <h4
+              class="font-header text-slate-800 font-bold text-base mb-4 text-center"
+            >
+              Ucapan & Doa dari Sahabat Pelayaran
+            </h4>
+            <div
+              id="wishes-board"
+              class="space-y-3 max-h-60 overflow-y-auto pr-2 text-xs"
+            >
+              <div
+                class="bg-white/90 p-3.5 rounded-xl border border-champagne/30 shadow-sm"
+              >
+                <span class="font-bold text-zoro-emerald">Sergio</span>:
+                <span class="text-slate-700"
+                  >Happy Wedding! Selamat atas bersatunya sang Pendekar dan sang Navigator. Bersama-sama, kalian adalah kru terkuat yang siap menaklukkan setiap badai di samudra kehidupan</span
+                >
+              </div>
+
+              <div
+              class="bg-white/90 p-3.5 rounded-xl border border-champagne/30 shadow-sm"
+            >
+              <span class="font-bold text-zoro-emerald">Roy</span>:
+              <span class="text-slate-700"
+                >Happy Wedding! Selamat Lock pasangan seumur hidup. Semoga cinta kalian sekokoh HP pool Belerick, selalu regeneratif menghadapi masalah, dan terus bertumbuh subur penuh kebahagiaan!</span
+              >
+            </div>
+
+            <div
+            class="bg-white/90 p-3.5 rounded-xl border border-champagne/30 shadow-sm"
+          >
+            <span class="font-bold text-zoro-emerald">Kevin</span>:
+            <span class="text-slate-700"
+              >Selamat coy</span
+            >
+          </div>
+
+          <div
+          class="bg-white/90 p-3.5 rounded-xl border border-champagne/30 shadow-sm"
+        >
+          <span class="font-bold text-zoro-emerald">Galang</span>:
+          <span class="text-slate-700"
+            >Selamat atas indahnya ikatan suci ini. Di dalam sastra, kita belajar bahwa cinta sejati tidak ditulis dengan tinta emas, melainkan dengan air mata, tawa, dan kesediaan untuk saling berbagi beban cerita. Selamat melangkah bersama. Mulai hari ini, kalian tidak perlu lagi menyimpan sunyi sendirian, karena sudah ada satu sama lain untuk tempat pulang dan menumpahkan segala rasa.</span
+          >
+        </div>
+
+              <div
+                class="bg-white/90 p-3.5 rounded-xl border border-champagne/30 shadow-sm"
+              >
+                <span class="font-bold text-zoro-emerald">Rasyid sang pemancing</span>:
+                <span class="text-slate-700"
+                  >Selamat menempuh hidup baru. Rumah tangga itu layaknya memancing di laut dalam; ulur saat ego sedang kencang, dan gulung bersama saat arah tujuan sudah selaras. Strike terbaik seumur hidup!</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer
+        class="py-12 bg-white text-center border-t border-champagne/40 text-xs text-slate-500"
+      >
+        <div class="max-w-xl mx-auto px-4 space-y-3">
+          <p class="font-decorative text-2xl gold-gradient-text font-bold">
+            Alpian dan Nisa
+          </p>
+          <p class="font-serifText text-sm text-slate-600 italic">
+            Terima kasih atas doa & dukungan dari keluarga serta sahabat
+            sekalian.
+          </p>
+          <p
+            class="text-[10px] text-zoro-emerald uppercase tracking-widest font-bold font-japanese"
+          >
+            HIMAKRI PRODUCTION — 2026
+          </p>
+        </div>
+      </footer>
+    </main>
+
+    <!-- GALLERY MODAL -->
+    <div
+      id="gallery-modal"
+      onclick="closeGalleryModal()"
+      class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4"
+    >
+      <img
+        id="modal-img"
+        src=""
+        alt="Enlarged photo"
+        class="max-w-full max-h-[85vh] rounded-2xl border-2 border-champagne shadow-2xl"
+      />
+    </div>
+
+    <!-- JAVASCRIPT LOGIC SECTION -->
+    <script>
+      // Guest Name URL Handler (?to=Nama+Tamu)
+      window.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const guestName = urlParams.get("to");
+        if (guestName) {
+          document.getElementById("guest-name-display").innerText = guestName;
+        }
+      });
+
+      // 1. Open Invitation Controller
+      function openInvitation() {
+        const cover = document.getElementById("cover-screen");
+        const mainContent = document.getElementById("main-content");
+        const musicToggle = document.getElementById("music-toggle");
+        const bgMusic = document.getElementById("bg-music");
+
+        cover.classList.add("opacity-0", "pointer-events-none");
+        setTimeout(() => {
+          cover.style.display = "none";
+          mainContent.classList.remove("opacity-0");
+          musicToggle.classList.remove("hidden");
+          bgMusic
+            .play()
+            .catch((e) =>
+              console.log(
+                "Audio autoplay restricted. User interaction recorded."
+              )
+            );
+        }, 800);
+      }
+
+      // 2. Music Player Controller
+      let isPlaying = true;
+      function toggleMusic() {
+        const bgMusic = document.getElementById("bg-music");
+        const musicIcon = document.getElementById("music-icon");
+
+        if (isPlaying) {
+          bgMusic.pause();
+          musicIcon.classList.remove("fa-spin");
+          musicIcon.classList.replace("fa-compact-disc", "fa-play");
+        } else {
+          bgMusic.play();
+          musicIcon.classList.add("fa-spin");
+          musicIcon.classList.replace("fa-play", "fa-compact-disc");
+        }
+        isPlaying = !isPlaying;
+      }
+
+      // 3. Real-Time Countdown Timer
+      const weddingDate = new Date("Oct 25, 2026 08:00:00").getTime();
+
+      const timerInterval = setInterval(function () {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText =
+          days < 10 ? "0" + days : days;
+        document.getElementById("hours").innerText =
+          hours < 10 ? "0" + hours : hours;
+        document.getElementById("minutes").innerText =
+          minutes < 10 ? "0" + minutes : minutes;
+        document.getElementById("seconds").innerText =
+          seconds < 10 ? "0" + seconds : seconds;
+
+        if (distance < 0) {
+          clearInterval(timerInterval);
+          document.getElementById("days").innerText = "00";
+          document.getElementById("hours").innerText = "00";
+          document.getElementById("minutes").innerText = "00";
+          document.getElementById("seconds").innerText = "00";
+        }
+      }, 1000);
+
+      // 4. Instant Clipboard Copy Function
+      function copyToClipboard(elementId) {
+        const textToCopy = document.getElementById(elementId).innerText;
+
+        const tempInput = document.createElement("textarea");
+        tempInput.value = textToCopy;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+
+        showNotification(
+          "Nomor rekening (" + textToCopy + ") berhasil disalin!"
+        );
+      }
+
+      // 5. Custom Notification Popup
+      function showNotification(msg) {
+        const notif = document.createElement("div");
+        notif.className =
+          "fixed top-6 right-6 z-50 bg-zoro-emerald text-white font-header text-xs py-3 px-6 rounded-full shadow-2xl border border-champagne animate-bounce";
+        notif.innerText = msg;
+        document.body.appendChild(notif);
+        setTimeout(() => notif.remove(), 3000);
+      }
+
+      // 6. Handle RSVP Form Submission
+      function handleRSVP(event) {
+        event.preventDefault();
+        const name = document.getElementById("rsvp-name").value;
+        const status = document.getElementById("rsvp-status").value;
+        const message = document.getElementById("rsvp-message").value;
+
+        if (message.trim() !== "") {
+          const wishesBoard = document.getElementById("wishes-board");
+          const newWish = document.createElement("div");
+          newWish.className =
+            "bg-white/90 p-3.5 rounded-xl border border-champagne/30 shadow-sm";
+          newWish.innerHTML = `<span class="font-bold text-zoro-emerald">${name}</span> (${status}): <span class="text-slate-700">${message}</span>`;
+          wishesBoard.prepend(newWish);
+        }
+
+        showNotification(
+          "Terima kasih " + name + ", konfirmasi Anda telah terkirim!"
+        );
+        document.getElementById("rsvp-form").reset();
+      }
+
+      // 7. Gallery Modal Control
+      function openGalleryModal(imageSrc) {
+        const modal = document.getElementById("gallery-modal");
+        const modalImg = document.getElementById("modal-img");
+        modalImg.src = imageSrc;
+        modal.classList.remove("hidden");
+      }
+
+      function closeGalleryModal() {
+        const modal = document.getElementById("gallery-modal");
+        modal.classList.add("hidden");
+      }
+
+      // 8. Add Calendar Function
+      function saveCalendar() {
+        const title = "Pernikahan Hasmi & Nia";
+        const details = "Akad Nikah & Resepsi Pernikahan Hasmi & Nia";
+        const location = "Grand Line Palace Ballroom, Jakarta Selatan";
+        const startDate = "20270515T080000";
+        const endDate = "20270515T150000";
+
+        const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+          title
+        )}&dates=${startDate}/${endDate}&details=${encodeURIComponent(
+          details
+        )}&location=${encodeURIComponent(location)}`;
+        window.open(calendarUrl, "_blank");
+      }
+    </script>
+  </body>
+</html>
